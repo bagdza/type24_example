@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Home</span>
+    <div>
+        <a href="login.html" id="login-link" class="btn btn-outline-primary">Login</a>
+        <a href="register.html" id="register-link" class="btn btn-outline-secondary">Register</a>
+        <a href="#" id="logout-link" class="btn btn-outline-danger d-none">Logout</a>
+    </div>
+</nav>
+
+<div class="container mt-5 text-center">
+    <h1>Welcome to the Website!</h1>
+    <p>Navigate to profile or gallery once logged in.</p>
+</div>
+
+<script>
+    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+    if (isLoggedIn) {
+        document.getElementById('login-link').classList.add('d-none');
+        document.getElementById('register-link').classList.add('d-none');
+        document.getElementById('logout-link').classList.remove('d-none');
+    }
+    document.getElementById('logout-link').addEventListener('click', () => {
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>
+
